@@ -1,5 +1,5 @@
 # nginx logs
-backend-access.log
-backend-error.log
-frontend-access.log
-frontend-error.log
+kinocms-access.log
+kinocms-error.log
+admin-kinocms-access.log
+admin-kinocms-error.log
