@@ -1,0 +1,5 @@
+192.168.83.1 - - [01/Mar/2019:10:10:34 +0200] "GET / HTTP/1.1" 200 1370 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
+192.168.83.1 - - [01/Mar/2019:10:10:34 +0200] "GET /assets/b7c0e334/css/bootstrap.css HTTP/1.1" 200 145933 "http://kinocms.test/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
+192.168.83.1 - - [01/Mar/2019:10:10:34 +0200] "GET /assets/c8e8b6eb/jquery.js HTTP/1.1" 200 271751 "http://kinocms.test/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
+192.168.83.1 - - [01/Mar/2019:10:10:34 +0200] "GET /assets/dcda4d2b/yii.js HTTP/1.1" 200 20911 "http://kinocms.test/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
+192.168.83.1 - - [01/Mar/2019:10:10:34 +0200] "GET /assets/b7c0e334/js/bootstrap.js HTTP/1.1" 200 75484 "http://kinocms.test/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36"
