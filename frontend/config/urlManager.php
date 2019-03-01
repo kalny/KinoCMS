@@ -12,6 +12,10 @@ return [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
     'rules' => [
-
+        ''              => 'site/index',
+        'about'         => 'site/about',
+        'about/news'    => 'site/news',
+        'affiche'       => 'cinema/affiche',
+        'film/<id>'     => 'cinema/film',
     ]
 ];

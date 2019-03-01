@@ -1,6 +1,7 @@
 <?php
 return [
-    'name' => 'KinoCMS',
+    'name' => 'Вкино',
+    'language' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',

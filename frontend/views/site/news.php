@@ -4,7 +4,8 @@
 
 use yii\helpers\Html;
 
-$this->title = 'О кинотеатре';
+$this->title = 'Новости';
+$this->params['breadcrumbs'][] = ['label' => 'О кинотеатре', 'url' => ['site/about']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -12,9 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Здесь будет страница о кинотеатре</p>
-
-    <p><a href="<?= \yii\helpers\Url::to(['site/news']) ?>">Новости</a></p>
+    <p>Здесь будут новости</p>
     
     <code><?= __FILE__ ?></code>
 </div>
