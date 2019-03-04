@@ -16,10 +16,10 @@ use yii\widgets\ActiveForm; ?>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($formModel, 'name') ?>
-    <?= $form->field($formModel, 'description') ?>
+    <?= $form->field($formModel, 'description')->textarea(['rows' => '6']) ?>
     <?= $form->field($formModel, 'seoTitle') ?>
-    <?= $form->field($formModel, 'seoDescription') ?>
-    <?= $form->field($formModel, 'seoKeywords') ?>
+    <?= $form->field($formModel, 'seoDescription')->textarea(['rows' => '6']) ?>
+    <?= $form->field($formModel, 'seoKeywords')->textarea(['rows' => '6']) ?>
     <?= $form->field($formModel, 'trailerUrl') ?>
 
     <div class="form-group">
