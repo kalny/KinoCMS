@@ -9,6 +9,9 @@
 namespace Common\bootstrap;
 
 
+use common\domain\Film\FilmRepositoryInterface;
+use common\repositories\FilmRepository;
+use Yii;
 use yii\base\Application;
 use yii\base\BootstrapInterface;
 
@@ -21,6 +24,8 @@ class SetUp implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        // TODO: Implement bootstrap() method.
+        $container = Yii::$container;
+
+        $container->setSingleton(FilmRepositoryInterface::class, FilmRepository::class);
     }
 }

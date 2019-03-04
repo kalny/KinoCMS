@@ -17,8 +17,12 @@ return [
         'films'             => 'films/index',
         'films/edit/<id>'   => 'films/edit',
         'films/add'         => 'films/add',
+        'films/delete'      => 'films/delete',
+        'films/<id>'        => 'films/view',
         'news'              => 'news/index',
         'news/edit/<id>'    => 'news/edit',
         'news/add'          => 'news/add',
+        'news/delete'       => 'news/delete',
+        'news/<id>'         => 'news/view',
     ]
 ];

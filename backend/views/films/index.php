@@ -8,31 +8,40 @@
 
 $this->title = 'Фильмы';
 
-?>
+/**@var \common\domain\Film\Film[] $films */
+
+use yii\helpers\Html; ?>
 <div class="films-index">
 
     <div class="box">
 
         <div class="box-body">
+
+            <?php if (count($films) > 0) : ?>
             <table class="table table-bordered">
                 <tbody>
+                <?php $cnt = 0; foreach ($films as $film): $cnt++; ?>
                 <tr>
-                    <td>1.</td>
-                    <td>Приключение животных</td>
+                    <td><?= $cnt ?>.</td>
+                    <td><a href="<?= \yii\helpers\Url::to(['films/view', 'id' => $film->id]) ?>"><?= $film->name ?></a></td>
                     <td>
-                        <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => 123]) ?>" class="btn btn-default btn-xs">Редактировать</a>
+                        <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => $film->id]) ?>" class="btn btn-primary btn-xs">Редактировать</a>
+                        <?= Html::beginForm(['/films/delete'], 'post', ['class' => 'inline-buttons']) ?>
+                        <?= Html::hiddenInput('id', $film->id); ?>
+                        <?= Html::submitButton('Удалить', ['class' => 'btn btn-danger btn-xs', 'data' => [
+                            'confirm' => 'Вы действительно хотите удалить фильм?',
+                            'method' => 'post',
+                        ],]) ?>
+                        <?= Html::endForm() ?>
                     </td>
                 </tr>
-                <tr>
-                    <td>2.</td>
-                    <td>Приключение животных</td>
-                    <td>
-                        <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => 124]) ?>" class="btn btn-default btn-xs">Редактировать</a>
-                    </td>
-                </tr>
+                <?php endforeach; ?>
 
                 </tbody>
             </table>
+            <?php else: ?>
+            <p>Нет ни одного фильма</p>
+            <?php endif ?>
         </div>
 
     </div>
