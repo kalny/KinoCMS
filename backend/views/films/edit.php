@@ -8,7 +8,21 @@
 
 $this->title = 'Редактировать фильм';
 
-?>
+use yii\helpers\Html;
+use yii\widgets\ActiveForm; ?>
 <div class="films-edit">
-    <p>Страница редактирования фильма</p>
+    <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($formModel, 'name') ?>
+    <?= $form->field($formModel, 'description')->textarea(['rows' => '6']) ?>
+    <?= $form->field($formModel, 'seoTitle') ?>
+    <?= $form->field($formModel, 'seoDescription')->textarea(['rows' => '6']) ?>
+    <?= $form->field($formModel, 'seoKeywords')->textarea(['rows' => '6']) ?>
+    <?= $form->field($formModel, 'trailerUrl') ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
 </div>
