@@ -32,6 +32,8 @@ class EditMetadataForm extends Model
     public $age;
     public $duration;
 
+    public $country;
+
     public function rules()
     {
         return [
@@ -40,6 +42,7 @@ class EditMetadataForm extends Model
             [['year', 'director', 'producer', 'composer', 'screenwriter', 'operator', 'budget', 'age', 'duration'], 'required'],
             [['director', 'producer', 'composer', 'screenwriter', 'operator'], 'string'],
             [['year'], 'string','length' => 4],
+            ['country', 'safe']
         ];
     }
 
@@ -57,6 +60,13 @@ class EditMetadataForm extends Model
         $this->age = $metadata->age;
         $this->duration = $metadata->duration;
 
+        $this->country = [];
+        foreach ($metadata->countries as $item) {
+            $this->country[] = $item->id;
+        }
+
+
+
     }
 
     public function attributeLabels()
@@ -71,6 +81,7 @@ class EditMetadataForm extends Model
             'budget' => 'Бюджет',
             'age' => 'Возраст',
             'duration' => 'Продолжительность',
+            'country' => 'Страна',
         ];
     }
 
@@ -90,7 +101,8 @@ class EditMetadataForm extends Model
             $this->operator,
             $this->budget,
             $this->age,
-            $this->duration
+            $this->duration,
+            $this->country
         );
     }
 }

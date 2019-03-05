@@ -12,9 +12,11 @@ namespace backend\controllers;
 use backend\forms\CreateMetadataForm;
 use backend\forms\EditMetadataForm;
 use backend\services\metadata\MetadataService;
+use common\domain\Country\Country;
 use common\domain\Film\Film;
 use common\domain\Metadata\Metadata;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -67,8 +69,11 @@ class MetadataController extends Controller
             return $this->redirect(['metadata/view', 'id' => $metadata->film->id]);
         }
 
+        $country = ArrayHelper::map(Country::find()->asArray()->all(), 'id', 'name');
+
         return $this->render('edit', [
             'formModel' => $form,
+            'country' => $country
         ]);
     }
 

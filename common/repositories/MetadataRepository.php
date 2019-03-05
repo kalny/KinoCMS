@@ -10,6 +10,7 @@ namespace common\repositories;
 
 use common\domain\Metadata\Metadata;
 use common\domain\Metadata\MetadataRepositoryInterface;
+use yii\db\Query;
 
 /**
  * Class MetadataRepository
@@ -25,5 +26,29 @@ class MetadataRepository implements MetadataRepositoryInterface
         if (!$metadata->save()) {
             throw new \RuntimeException('Saving error.');
         }
+    }
+
+    public function addCountry(Metadata $metadata, array $country)
+    {
+        $metadataId = $metadata->id;
+
+        //Удаляем все страны
+        \Yii::$app
+            ->db
+            ->createCommand()
+            ->delete('{{%metadata_country}}', ['metadata_id' => $metadataId])
+            ->execute();
+
+        //записываем заново
+        foreach ($country as $id) {
+            \Yii::$app
+                ->db
+                ->createCommand()
+                ->insert('{{%metadata_country}}', ['metadata_id' => $metadataId, 'country_id' => $id])
+                ->execute();
+        }
+
+
+
     }
 }

@@ -8,7 +8,7 @@
 
 $this->title = 'Редактировать метаданные';
 
-use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -16,6 +16,24 @@ use yii\widgets\ActiveForm;
 <div class="films-edit">
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php
+
+    echo $form->field($formModel, 'country')->widget(Select2::class, [
+        'data' => $country,
+        'options' => [
+            'placeholder' => 'Выберите страны',
+            'multiple' => true
+        ],
+        'pluginOptions' => [
+            'allowClear' => true,
+            //'tags' => true
+        ],
+    ]);
+
+
+
+
+    ?>
     <?= $form->field($formModel, 'year') ?>
     <?= $form->field($formModel, 'director') ?>
     <?= $form->field($formModel, 'producer') ?>

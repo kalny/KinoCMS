@@ -28,7 +28,9 @@ class MetadataDto
     public $age;
     public $duration;
 
-    public function __construct($year, $director, $producer, $composer, $screenwriter, $operator, $budget, $age, $duration, $filmId = null)
+    public $country;
+
+    public function __construct($year, $director, $producer, $composer, $screenwriter, $operator, $budget, $age, $duration, $country = null, $filmId = null)
     {
 
         $this->year = $year;
@@ -40,6 +42,7 @@ class MetadataDto
         $this->budget = $budget;
         $this->age = $age;
         $this->duration = $duration;
+        $this->country = $country;
         $this->filmId = $filmId;
     }
 }

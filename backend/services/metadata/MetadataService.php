@@ -59,6 +59,11 @@ class MetadataService
         );
 
         $this->repository->save($metadata);
+
+        if (is_array($metadataDto->country)) {
+            $this->repository->addCountry($metadata, $metadataDto->country);
+        }
+
     }
 
     /**

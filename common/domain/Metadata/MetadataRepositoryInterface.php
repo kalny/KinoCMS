@@ -17,4 +17,5 @@ namespace common\domain\Metadata;
 interface MetadataRepositoryInterface
 {
     public function save(Metadata $metadata);
+    public function addCountry(Metadata $metadata, array $country);
 }
