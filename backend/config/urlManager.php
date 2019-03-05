@@ -21,6 +21,7 @@ return [
         'films/delete'      => 'films/delete',
         'films/<id>'        => 'films/view',
         'films/meta/<id>'   => 'metadata/view',
+        'films/edit-metadata/<id>'   => 'metadata/edit',
         'news'              => 'news/index',
         'news/edit/<id>'    => 'news/edit',
         'news/add'          => 'news/add',

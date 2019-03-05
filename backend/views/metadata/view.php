@@ -7,7 +7,7 @@
  */
 
 /**@var \common\domain\Film\Film $film */
-/**@var \common\domain\Film\Metadata $filmMetadata */
+/**@var \common\domain\Metadata\Metadata $filmMetadata */
 
 $this->title = 'Метаданные фильма ' . $film->name;
 
@@ -85,12 +85,12 @@ use zxbodya\yii2\galleryManager\GalleryManager; ?>
                         </tr>
                     </tbody>
                 </table><br>
-                <p><a href="<?= \yii\helpers\Url::to(['films/edit-metadata', 'id' => $filmMetadata->id]) ?>" type="button" class="btn btn-success">
+                <p><a href="<?= \yii\helpers\Url::to(['metadata/edit', 'id' => $filmMetadata->id]) ?>" type="button" class="btn btn-success">
                     Редактировать
                 </a></p>
             <?php else: ?>
                 <p>Метаданные отсутствуют</p><br>
-                <p><a href="<?= \yii\helpers\Url::to(['films/add-metadata', 'id' => $film->id]) ?>" type="button" class="btn btn-success">
+                <p><a href="<?= \yii\helpers\Url::to(['metadata/add', 'id' => $film->id]) ?>" type="button" class="btn btn-success">
                         Добавить
                     </a></p>
             <?php endif ?>

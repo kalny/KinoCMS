@@ -9,6 +9,7 @@
 namespace common\domain\Film;
 
 
+use common\domain\Metadata\Metadata;
 use yii\db\ActiveRecord;
 
 /**

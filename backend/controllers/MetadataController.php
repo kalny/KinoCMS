@@ -9,12 +9,29 @@
 namespace backend\controllers;
 
 
+use backend\forms\CreateMetadataForm;
+use backend\forms\EditMetadataForm;
+use backend\services\metadata\MetadataService;
 use common\domain\Film\Film;
+use common\domain\Metadata\Metadata;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 class MetadataController extends Controller
 {
+
+    /**
+     * @var MetadataService
+     */
+    private $metadataService;
+
+    public function __construct(string $id, $module, MetadataService $metadataService, array $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->metadataService = $metadataService;
+    }
+
     /**
      * @param $id
      * @return string
@@ -34,6 +51,49 @@ class MetadataController extends Controller
 
     /**
      * @param $id
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
+     */
+    public function actionEdit($id)
+    {
+        $metadata = $this->getMetadata($id);
+
+        $form = new EditMetadataForm($metadata);
+
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+
+            $this->metadataService->editMetadata($metadata, $form->getDto());
+
+            return $this->redirect(['metadata/view', 'id' => $metadata->film->id]);
+        }
+
+        return $this->render('edit', [
+            'formModel' => $form,
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @return string|\yii\web\Response
+     */
+    public function actionAdd($id)
+    {
+        $form = new CreateMetadataForm($id);
+
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+
+            $metadata = $this->metadataService->createMetadata($form->getDto());
+
+            return $this->redirect(['metadata/view', 'id' => $metadata->film->id]);
+        }
+
+        return $this->render('add', [
+            'formModel' => $form
+        ]);
+    }
+
+    /**
+     * @param $id
      * @return Film|null
      * @throws NotFoundHttpException
      */
@@ -46,5 +106,21 @@ class MetadataController extends Controller
         }
 
         return $film;
+    }
+
+    /**
+     * @param $id
+     * @return Metadata|null
+     * @throws NotFoundHttpException
+     */
+    private function getMetadata($id)
+    {
+        $metadata = Metadata::findOne($id);
+
+        if (!$metadata) {
+            throw new NotFoundHttpException();
+        }
+
+        return $metadata;
     }
 }
