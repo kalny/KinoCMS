@@ -91,7 +91,7 @@ use zxbodya\yii2\galleryManager\GalleryManager; ?>
             <?php else: ?>
                 <p>Метаданные отсутствуют</p><br>
                 <p><a href="<?= \yii\helpers\Url::to(['films/add-metadata', 'id' => $film->id]) ?>" type="button" class="btn btn-success">
-                        Редактировать
+                        Добавить
                     </a></p>
             <?php endif ?>
         </div>
