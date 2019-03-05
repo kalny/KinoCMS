@@ -51,16 +51,20 @@ class Metadata extends ActiveRecord
 
     public function create($year, $director, $producer, $composer, $screenwriter, $operator, $budget, $age, $duration, $filmId)
     {
-        $this->year = $year;
-        $this->director = $director;
-        $this->producer = $producer;
-        $this->composer = $composer;
-        $this->screenwriter = $screenwriter;
-        $this->operator = $operator;
-        $this->budget = $budget;
-        $this->age = $age;
-        $this->duration = $duration;
-        $this->film_id = $filmId;
+        $metadata = new self();
+
+        $metadata->year = $year;
+        $metadata->director = $director;
+        $metadata->producer = $producer;
+        $metadata->composer = $composer;
+        $metadata->screenwriter = $screenwriter;
+        $metadata->operator = $operator;
+        $metadata->budget = $budget;
+        $metadata->age = $age;
+        $metadata->duration = $duration;
+        $metadata->film_id = $filmId;
+
+        return $metadata;
     }
 
     public function getCountries()

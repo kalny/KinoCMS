@@ -49,7 +49,7 @@ use zxbodya\yii2\galleryManager\GalleryManager; ?>
             <strong><i class="fa fa-file-text-o margin-r-5"></i> Трейлер</strong>
 
             <div>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/1-q8C_c-nlM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="<?= $film->trailer_url ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         <!-- /.box-body -->

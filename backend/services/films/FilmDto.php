@@ -25,7 +25,7 @@ class FilmDto
     public $trailerUrl;
     public $mainPosterId;
 
-    public function __construct($name, $description, $seoTitle, $seoDescription, $seoKeywords, $trailerUrl, $mainPosterId)
+    public function __construct($name, $description, $seoTitle, $seoDescription, $seoKeywords, $trailerUrl, $mainPosterId = null)
     {
 
         $this->name = $name;

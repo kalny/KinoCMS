@@ -6,7 +6,7 @@
  * Time: 12:46
  */
 
-$this->title = 'Редактировать метаданные';
+$this->title = 'Добавить метаданные';
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
