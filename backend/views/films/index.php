@@ -26,7 +26,7 @@ use yii\helpers\Html; ?>
                     <td><a href="<?= \yii\helpers\Url::to(['films/view', 'id' => $film->id]) ?>"><?= $film->name ?></a></td>
                     <td>
                         <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => $film->id]) ?>" class="btn btn-primary btn-xs">Редактировать</a>
-                        <a href="<?= \yii\helpers\Url::to(['films/metadata', 'id' => $film->id]) ?>" class="btn btn-success btn-xs">Метаданные</a>
+                        <a href="<?= \yii\helpers\Url::to(['metadata/view', 'id' => $film->id]) ?>" class="btn btn-success btn-xs">Метаданные</a>
                         <?= Html::beginForm(['/films/delete'], 'post', ['class' => 'inline-buttons']) ?>
                         <?= Html::hiddenInput('id', $film->id); ?>
                         <?= Html::submitButton('Удалить', ['class' => 'btn btn-danger btn-xs', 'data' => [

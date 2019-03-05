@@ -87,23 +87,6 @@ class FilmsController extends Controller
 
     /**
      * @param $id
-     * @return string
-     * @throws NotFoundHttpException
-     */
-    public function actionMetadata($id)
-    {
-        $film = $this->getFilm($id);
-
-        $filmMetadata = $film->getMetadata()->one();
-
-        return $this->render('metadata', [
-            'film' => $film,
-            'filmMetadata' => $filmMetadata
-        ]);
-    }
-
-    /**
-     * @param $id
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException
      */

@@ -20,7 +20,7 @@ return [
         'films/add'         => 'films/add',
         'films/delete'      => 'films/delete',
         'films/<id>'        => 'films/view',
-        'films/meta/<id>'   => 'films/metadata',
+        'films/meta/<id>'   => 'metadata/view',
         'news'              => 'news/index',
         'news/edit/<id>'    => 'news/edit',
         'news/add'          => 'news/add',
