@@ -11,6 +11,7 @@ namespace backend\services\films;
 use common\domain\Film\Film;
 use common\domain\Film\FilmRepositoryInterface;
 use common\domain\Film\FilmSeo;
+use yii\db\Query;
 
 /**
  * Class FilmsService
@@ -77,7 +78,8 @@ class FilmsService
         $film->edit(
             $filmDto->name,
             $filmDto->description,
-            $filmDto->trailerUrl
+            $filmDto->trailerUrl,
+            $filmDto->mainPosterId
         );
         $filmSeo->edit(
             $filmDto->seoTitle,
@@ -86,5 +88,19 @@ class FilmsService
         );
 
         $this->repository->save($film, $filmSeo);
+    }
+
+    public function getPosters(Film $film)
+    {
+        $posters = (new Query())->select(['id', 'name'])
+            ->from('{{%gallery_image}}')
+            ->where(['type' => 'film'])
+            ->andWhere(['ownerId' => $film->id])
+            ->andWhere(['not', ['name' => null]])
+            ->andWhere(['not', ['name' => '']])
+            ->orderBy(['id' => SORT_DESC])
+            ->all();
+
+        return $posters;
     }
 }

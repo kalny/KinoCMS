@@ -16,6 +16,7 @@ use common\domain\Film\FilmSeo;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use zxbodya\yii2\galleryManager\GalleryManagerAction;
 
 /**
  * Class FilmsController
@@ -23,6 +24,19 @@ use yii\web\NotFoundHttpException;
  */
 class FilmsController extends Controller
 {
+    public function actions()
+    {
+        return [
+            'galleryApi' => [
+                'class' => GalleryManagerAction::class,
+                // mappings between type names and model classes (should be the same as in behaviour)
+                'types' => [
+                    'film' => Film::class
+                ]
+            ],
+        ];
+    }
+
     /**
      * @var FilmsService
      */
@@ -94,7 +108,8 @@ class FilmsController extends Controller
         }
 
         return $this->render('edit', [
-            'formModel' => $form
+            'formModel' => $form,
+            'posters' => $this->filmsService->getPosters($film),
         ]);
     }
 

@@ -29,9 +29,12 @@ class EditFilmForm extends Model
     public $seoDescription;
     public $seoKeywords;
 
+    public $mainPosterId;
+
     public function rules()
     {
         return [
+            ['mainPosterId', 'integer'],
             [['name', 'description', 'seoTitle'], 'required'],
             [['name', 'description', 'trailerUrl', 'seoTitle', 'seoDescription', 'seoKeywords'], 'string'],
         ];
@@ -53,6 +56,7 @@ class EditFilmForm extends Model
             $this->seoKeywords = $filmSeo->keywords;
         }
 
+        $this->mainPosterId = $film->main_poster_id;
 
     }
 
@@ -66,6 +70,8 @@ class EditFilmForm extends Model
             'seoTitle' => 'Title (SEO)',
             'seoDescription' => 'Description (SEO)',
             'seoKeywords' => 'Keywords (SEO)',
+
+            'mainPosterId' => 'Главный постер',
         ];
     }
 
@@ -82,7 +88,8 @@ class EditFilmForm extends Model
             $this->seoTitle,
             $this->seoDescription,
             $this->seoKeywords,
-            $this->trailerUrl
+            $this->trailerUrl,
+            $this->mainPosterId
         );
     }
 }

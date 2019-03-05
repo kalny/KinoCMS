@@ -23,8 +23,9 @@ class FilmDto
     public $seoDescription;
     public $seoKeywords;
     public $trailerUrl;
+    public $mainPosterId;
 
-    public function __construct($name, $description, $seoTitle, $seoDescription, $seoKeywords, $trailerUrl)
+    public function __construct($name, $description, $seoTitle, $seoDescription, $seoKeywords, $trailerUrl, $mainPosterId)
     {
 
         $this->name = $name;
@@ -33,5 +34,6 @@ class FilmDto
         $this->seoDescription = $seoDescription;
         $this->seoKeywords = $seoKeywords;
         $this->trailerUrl = $trailerUrl;
+        $this->mainPosterId = $mainPosterId;
     }
 }

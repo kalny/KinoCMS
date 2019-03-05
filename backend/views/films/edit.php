@@ -8,8 +8,13 @@
 
 $this->title = 'Редактировать фильм';
 
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm; ?>
+use yii\widgets\ActiveForm;
+
+/** @var array $posters */
+
+?>
 <div class="films-edit">
     <?php $form = ActiveForm::begin(); ?>
 
@@ -19,6 +24,7 @@ use yii\widgets\ActiveForm; ?>
     <?= $form->field($formModel, 'seoDescription')->textarea(['rows' => '6']) ?>
     <?= $form->field($formModel, 'seoKeywords')->textarea(['rows' => '6']) ?>
     <?= $form->field($formModel, 'trailerUrl') ?>
+    <?= $form->field($formModel, 'mainPosterId')->dropDownList(ArrayHelper::map($posters, 'id', 'name')) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>

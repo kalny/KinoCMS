@@ -11,21 +11,20 @@
 
 $this->title = 'Карточка фильма ' . $film->name;
 
-use yii\helpers\Html; ?>
+use yii\helpers\Html;
+use zxbodya\yii2\galleryManager\GalleryManager; ?>
 
 <div class="films-view">
 
-    <div>
-        <div class="view-actions">
-            <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => $film->id]) ?>" type="button" class="btn btn-primary">Редактировать</a>
-            <?= Html::beginForm(['/films/delete'], 'post', ['class' => 'inline-buttons']) ?>
-            <?= Html::hiddenInput('id', $film->id); ?>
-            <?= Html::submitButton('Удалить', ['class' => 'btn btn-danger', 'data' => [
-                'confirm' => 'Вы действительно хотите удалить фильм?',
-                'method' => 'post',
-            ],]) ?>
-            <?= Html::endForm() ?>
-        </div>
+    <div class="view-actions">
+        <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => $film->id]) ?>" type="button" class="btn btn-primary">Редактировать</a>
+        <?= Html::beginForm(['/films/delete'], 'post', ['class' => 'inline-buttons']) ?>
+        <?= Html::hiddenInput('id', $film->id); ?>
+        <?= Html::submitButton('Удалить', ['class' => 'btn btn-danger', 'data' => [
+            'confirm' => 'Вы действительно хотите удалить фильм?',
+            'method' => 'post',
+        ],]) ?>
+        <?= Html::endForm() ?>
     </div>
 
     <div class="box box-primary">
@@ -51,6 +50,43 @@ use yii\helpers\Html; ?>
             <div>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/1-q8C_c-nlM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Постеры и кадры</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <?= GalleryManager::widget(
+                [
+                    'model' => $film,
+                    'behaviorName' => 'galleryBehavior',
+                    'apiRoute' => 'films/galleryApi'
+                ]
+            ); ?>
+        </div>
+        <!-- /.box-body -->
+    </div>
+
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Основной постер</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <?php if ($film->main_poster_id === null): ?>
+            <p>Основной постер еще не установлен. Перейдите на
+                <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => $film->id]) ?>">страницу редактирования</a>
+                фильма, чтобы установить его.</p>
+            <?php else: ?>
+            <p><img src="/posters/<?= $film->id ?>/<?= $film->main_poster_id ?>/small.jpg" alt=""></p>
+            <p>Основной постер можно сменить на
+                <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => $film->id]) ?>">странице редактирования</a>
+            фильма. Можно выбрать только постер, у которого заполнено название.</p>
+            <?php endif ?>
         </div>
         <!-- /.box-body -->
     </div>

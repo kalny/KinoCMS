@@ -18,9 +18,12 @@ use yii\db\ActiveRecord;
  * @property string $name
  * @property string $description
  * @property integer $trailer_url
+ * @property integer $main_poster_id
  */
 class Film extends ActiveRecord
 {
+    use GalleryTrait;
+
     public static function tableName()
     {
         return '{{films}}';
@@ -37,11 +40,12 @@ class Film extends ActiveRecord
         return $film;
     }
 
-    public function edit($name, $description, $trailerUrl)
+    public function edit($name, $description, $trailerUrl, $mainPosterId = null)
     {
         $this->name = $name;
         $this->description = $description;
         $this->trailer_url = $trailerUrl;
+        $this->main_poster_id = $mainPosterId;
     }
 
     public function getSeo()

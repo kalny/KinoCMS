@@ -12,6 +12,8 @@ return [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
     'rules' => [
+        '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+
         'login'             => 'site/login',
         'logout'            => 'site/logout',
         'films'             => 'films/index',
@@ -24,5 +26,6 @@ return [
         'news/add'          => 'news/add',
         'news/delete'       => 'news/delete',
         'news/<id>'         => 'news/view',
+
     ]
 ];
