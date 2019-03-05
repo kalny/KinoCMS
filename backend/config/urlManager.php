@@ -12,8 +12,7 @@ return [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
     'rules' => [
-        '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-
+        'films/galleryApi'  => 'films/galleryApi',
         'login'             => 'site/login',
         'logout'            => 'site/logout',
         'films'             => 'films/index',
@@ -21,11 +20,11 @@ return [
         'films/add'         => 'films/add',
         'films/delete'      => 'films/delete',
         'films/<id>'        => 'films/view',
+        'films/meta/<id>'   => 'films/metadata',
         'news'              => 'news/index',
         'news/edit/<id>'    => 'news/edit',
         'news/add'          => 'news/add',
         'news/delete'       => 'news/delete',
         'news/<id>'         => 'news/view',
-
     ]
 ];

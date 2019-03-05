@@ -52,4 +52,9 @@ class Film extends ActiveRecord
     {
         return FilmSeo::find()->where(['film_id' => $this->id]);
     }
+
+    public function getMetadata()
+    {
+        return Metadata::find()->where(['film_id' => $this->id]);
+    }
 }
