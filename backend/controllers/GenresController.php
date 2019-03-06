@@ -15,6 +15,7 @@ use backend\services\genres\GenresService;
 use common\domain\Genre\Genre;
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class GenresController extends Controller
 {

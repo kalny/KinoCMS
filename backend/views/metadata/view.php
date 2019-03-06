@@ -11,8 +11,7 @@
 
 $this->title = 'Метаданные фильма ' . $film->name;
 
-use yii\helpers\Html;
-use zxbodya\yii2\galleryManager\GalleryManager; ?>
+?>
 
 <div class="films-view">
 

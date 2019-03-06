@@ -40,6 +40,13 @@ return [
         'cities/edit/<id>'          => 'cities/edit',
         'cities/delete'             => 'cities/delete',
 
+        'schedules'                 => 'schedules/index',
+        'schedules/add/<id>'        => 'schedules/add',
+        'schedules/change-cost/<id>'=> 'schedules/change-cost',
+        'schedules/close'           => 'schedules/close',
+        'schedules/delete'          => 'schedules/delete',
+        'schedules/<id>'            => 'schedules/view',
+
         'news'                      => 'news/index',
         'news/edit/<id>'            => 'news/edit',
         'news/add'                  => 'news/add',

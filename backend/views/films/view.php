@@ -19,6 +19,7 @@ use zxbodya\yii2\galleryManager\GalleryManager; ?>
     <div class="view-actions">
         <a href="<?= \yii\helpers\Url::to(['films/edit', 'id' => $film->id]) ?>" type="button" class="btn btn-primary">Редактировать</a>
         <a href="<?= \yii\helpers\Url::to(['metadata/view', 'id' => $film->id]) ?>" type="button" class="btn btn-success">Метаданные</a>
+        <a href="<?= \yii\helpers\Url::to(['schedules/add', 'id' => $film->id]) ?>" type="button" class="btn btn-success">Добавить запись</a>
         <?= Html::beginForm(['/films/delete'], 'post', ['class' => 'inline-buttons']) ?>
         <?= Html::hiddenInput('id', $film->id); ?>
         <?= Html::submitButton('Удалить', ['class' => 'btn btn-danger', 'data' => [

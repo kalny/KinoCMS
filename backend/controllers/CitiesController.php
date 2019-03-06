@@ -15,6 +15,7 @@ use backend\services\cities\CitiesService;
 use common\domain\City\City;
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class CitiesController extends Controller
 {

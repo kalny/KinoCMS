@@ -25,6 +25,7 @@
                     ['label' => 'Страны', 'icon' => 'home', 'url' => ['/countries'], 'active' => $this->context->id == 'countries'],
                     ['label' => 'Жанры', 'icon' => 'home', 'url' => ['/genres'], 'active' => $this->context->id == 'genres'],
                     ['label' => 'Города', 'icon' => 'home', 'url' => ['/cities'], 'active' => $this->context->id == 'cities'],
+                    ['label' => 'Расписание сеансов', 'icon' => 'home', 'url' => ['/schedules'], 'active' => $this->context->id == 'schedules'],
                     [
                         'label' => 'О нас',
                         'icon' => 'share',
