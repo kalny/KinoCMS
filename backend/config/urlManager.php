@@ -35,6 +35,11 @@ return [
         'genres/edit/<id>'          => 'genres/edit',
         'genres/delete'             => 'genres/delete',
 
+        'cities'                    => 'cities/index',
+        'cities/add'                => 'cities/add',
+        'cities/edit/<id>'          => 'cities/edit',
+        'cities/delete'             => 'cities/delete',
+
         'news'                      => 'news/index',
         'news/edit/<id>'            => 'news/edit',
         'news/add'                  => 'news/add',

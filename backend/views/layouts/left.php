@@ -24,6 +24,7 @@
                     ['label' => 'Фильмы', 'icon' => 'home', 'url' => ['/films'], 'active' => $this->context->id == 'films'],
                     ['label' => 'Страны', 'icon' => 'home', 'url' => ['/countries'], 'active' => $this->context->id == 'countries'],
                     ['label' => 'Жанры', 'icon' => 'home', 'url' => ['/genres'], 'active' => $this->context->id == 'genres'],
+                    ['label' => 'Города', 'icon' => 'home', 'url' => ['/cities'], 'active' => $this->context->id == 'cities'],
                     [
                         'label' => 'О нас',
                         'icon' => 'share',

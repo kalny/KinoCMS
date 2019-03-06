@@ -2,36 +2,36 @@
 /**
  * Created by PhpStorm.
  * User: anton
- * Date: 05.03.19
- * Time: 13:26
+ * Date: 06.03.19
+ * Time: 9:08
  */
 
-namespace common\domain\Country;
+namespace common\domain\City;
 
 
 use yii\db\ActiveRecord;
 
 /**
- * Country model
+ * City model
  *
  * @property integer $id
  * @property string name
 
  */
-class Country extends ActiveRecord
+class City extends ActiveRecord
 {
     public static function tableName()
     {
-        return '{{%country}}';
+        return '{{%cities}}';
     }
 
     public static function create($name)
     {
-        $country = new self();
+        $city = new self();
 
-        $country->name = $name;
+        $city->name = $name;
 
-        return $country;
+        return $city;
     }
 
     public function edit($name)

@@ -9,10 +9,12 @@
 namespace Common\bootstrap;
 
 
+use common\domain\City\CityRepositoryInterface;
 use common\domain\Country\CountryRepositoryInterface;
 use common\domain\Film\FilmRepositoryInterface;
 use common\domain\Genre\GenreRepositoryInterface;
 use common\domain\Metadata\MetadataRepositoryInterface;
+use common\repositories\CityRepository;
 use common\repositories\CountryRepository;
 use common\repositories\FilmRepository;
 use common\repositories\GenreRepository;
@@ -36,5 +38,6 @@ class SetUp implements BootstrapInterface
         $container->setSingleton(MetadataRepositoryInterface::class, MetadataRepository::class);
         $container->setSingleton(CountryRepositoryInterface::class, CountryRepository::class);
         $container->setSingleton(GenreRepositoryInterface::class, GenreRepository::class);
+        $container->setSingleton(CityRepositoryInterface::class, CityRepository::class);
     }
 }
