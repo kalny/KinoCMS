@@ -9,8 +9,8 @@
 namespace backend\controllers;
 
 
-use backend\forms\CreateMetadataForm;
-use backend\forms\EditMetadataForm;
+use backend\forms\Metadata\CreateMetadataForm;
+use backend\forms\Metadata\EditMetadataForm;
 use backend\services\metadata\MetadataService;
 use common\domain\Country\Country;
 use common\domain\Film\Film;

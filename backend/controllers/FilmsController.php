@@ -8,8 +8,8 @@
 
 namespace backend\controllers;
 
-use backend\forms\CreateFilmForm;
-use backend\forms\EditFilmForm;
+use backend\forms\Film\CreateFilmForm;
+use backend\forms\Film\EditFilmForm;
 use backend\services\films\FilmsService;
 use common\domain\Film\Film;
 use common\domain\Film\FilmSeo;

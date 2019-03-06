@@ -9,8 +9,8 @@
 namespace backend\controllers;
 
 
-use backend\forms\CreateGenreForm;
-use backend\forms\EditGenreForm;
+use backend\forms\Genre\CreateGenreForm;
+use backend\forms\Genre\EditGenreForm;
 use backend\services\genres\GenresService;
 use common\domain\Genre\Genre;
 use Yii;

@@ -9,8 +9,8 @@
 namespace backend\controllers;
 
 
-use backend\forms\CreateCountryForm;
-use backend\forms\EditCountryForm;
+use backend\forms\Country\CreateCountryForm;
+use backend\forms\Country\EditCountryForm;
 use backend\services\countries\CountriesService;
 use common\domain\Country\Country;
 use Yii;

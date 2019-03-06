@@ -9,8 +9,8 @@
 namespace backend\controllers;
 
 
-use backend\forms\ChangeSchedulePriceForm;
-use backend\forms\CreateScheduleForm;
+use backend\forms\Schedules\ChangeSchedulePriceForm;
+use backend\forms\Schedules\CreateScheduleForm;
 use backend\services\schedules\SchedulesService;
 use common\domain\City\City;
 use common\domain\Schedule\Schedule;

@@ -3,16 +3,16 @@
  * Created by PhpStorm.
  * User: anton
  * Date: 06.03.19
- * Time: 9:20
+ * Time: 8:00
  */
 
-namespace backend\forms;
+namespace backend\forms\Country;
 
 
-use backend\services\cities\CityDto;
+use backend\services\countries\CountryDto;
 use yii\base\Model;
 
-class CreateCityForm extends Model
+class CreateCountryForm extends Model
 {
     public $name;
 
@@ -33,7 +33,7 @@ class CreateCityForm extends Model
 
     public function getDto()
     {
-        return new CityDto(
+        return new CountryDto(
             $this->name
         );
     }

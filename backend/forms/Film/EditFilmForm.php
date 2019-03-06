@@ -6,19 +6,20 @@
  * Time: 11:19
  */
 
-namespace backend\forms;
+namespace backend\forms\Film;
 
 use backend\services\films\FilmDto;
+use common\domain\Film\Film;
 use yii\base\Model;
 
 /**
- * Class CreateFilmForm
+ * Class EditFilmForm
  * @package backend\forms
  *
  *
- * Форма создания фильма
+ * Форма редактирования фильма
  */
-class CreateFilmForm extends Model
+class EditFilmForm extends Model
 {
     public $name;
     public $description;
@@ -28,12 +29,35 @@ class CreateFilmForm extends Model
     public $seoDescription;
     public $seoKeywords;
 
+    public $mainPosterId;
+
     public function rules()
     {
         return [
+            ['mainPosterId', 'integer'],
             [['name', 'description', 'seoTitle'], 'required'],
             [['name', 'description', 'trailerUrl', 'seoTitle', 'seoDescription', 'seoKeywords'], 'string'],
         ];
+    }
+
+    public function __construct(Film $film, array $config = [])
+    {
+        parent::__construct($config);
+
+        $this->name = $film->name;
+        $this->description = $film->description;
+        $this->trailerUrl = $film->trailer_url;
+
+        $filmSeo = $film->getSeo()->one();
+
+        if ($filmSeo) {
+            $this->seoTitle = $filmSeo->title;
+            $this->seoDescription = $filmSeo->description;
+            $this->seoKeywords = $filmSeo->keywords;
+        }
+
+        $this->mainPosterId = $film->main_poster_id;
+
     }
 
     public function attributeLabels()
@@ -46,6 +70,8 @@ class CreateFilmForm extends Model
             'seoTitle' => 'Title (SEO)',
             'seoDescription' => 'Description (SEO)',
             'seoKeywords' => 'Keywords (SEO)',
+
+            'mainPosterId' => 'Главный постер',
         ];
     }
 
@@ -62,7 +88,8 @@ class CreateFilmForm extends Model
             $this->seoTitle,
             $this->seoDescription,
             $this->seoKeywords,
-            $this->trailerUrl
+            $this->trailerUrl,
+            $this->mainPosterId
         );
     }
 }

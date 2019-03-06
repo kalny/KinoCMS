@@ -3,16 +3,16 @@
  * Created by PhpStorm.
  * User: anton
  * Date: 06.03.19
- * Time: 8:00
+ * Time: 8:51
  */
 
-namespace backend\forms;
+namespace backend\forms\Genre;
 
 
-use backend\services\countries\CountryDto;
+use backend\services\genres\GenreDto;
 use yii\base\Model;
 
-class CreateCountryForm extends Model
+class CreateGenreForm extends Model
 {
     public $name;
 
@@ -27,13 +27,13 @@ class CreateCountryForm extends Model
     public function attributeLabels()
     {
         return [
-            'name' => 'Наименование',
+            'name' => 'Название',
         ];
     }
 
     public function getDto()
     {
-        return new CountryDto(
+        return new GenreDto(
             $this->name
         );
     }

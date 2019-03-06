@@ -9,8 +9,8 @@
 namespace backend\controllers;
 
 
-use backend\forms\CreateCityForm;
-use backend\forms\EditCityForm;
+use backend\forms\City\CreateCityForm;
+use backend\forms\City\EditCityForm;
 use backend\services\cities\CitiesService;
 use common\domain\City\City;
 use Yii;

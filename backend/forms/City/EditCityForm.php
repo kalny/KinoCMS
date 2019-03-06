@@ -3,18 +3,26 @@
  * Created by PhpStorm.
  * User: anton
  * Date: 06.03.19
- * Time: 8:51
+ * Time: 9:21
  */
 
-namespace backend\forms;
+namespace backend\forms\City;
 
 
-use backend\services\genres\GenreDto;
+use backend\services\cities\CityDto;
+use common\domain\City\City;
 use yii\base\Model;
 
-class CreateGenreForm extends Model
+class EditCityForm extends Model
 {
     public $name;
+
+    public function __construct(City $city, array $config = [])
+    {
+        parent::__construct($config);
+
+        $this->name = $city->name;
+    }
 
     public function rules()
     {
@@ -27,13 +35,13 @@ class CreateGenreForm extends Model
     public function attributeLabels()
     {
         return [
-            'name' => 'Название',
+            'name' => 'Наименование',
         ];
     }
 
     public function getDto()
     {
-        return new GenreDto(
+        return new CityDto(
             $this->name
         );
     }

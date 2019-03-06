@@ -6,7 +6,7 @@
  * Time: 10:59
  */
 
-namespace backend\forms;
+namespace backend\forms\Schedules;
 
 
 use backend\services\schedules\CreateScheduleDto;

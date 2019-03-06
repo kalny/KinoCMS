@@ -3,25 +3,25 @@
  * Created by PhpStorm.
  * User: anton
  * Date: 06.03.19
- * Time: 8:23
+ * Time: 8:51
  */
 
-namespace backend\forms;
+namespace backend\forms\Genre;
 
 
-use backend\services\countries\CountryDto;
-use common\domain\Country\Country;
+use backend\services\genres\GenreDto;
+use common\domain\Genre\Genre;
 use yii\base\Model;
 
-class EditCountryForm extends Model
+class EditGenreForm extends Model
 {
     public $name;
 
-    public function __construct(Country $country, array $config = [])
+    public function __construct(Genre $genre, array $config = [])
     {
         parent::__construct($config);
 
-        $this->name = $country->name;
+        $this->name = $genre->name;
     }
 
     public function rules()
@@ -35,13 +35,13 @@ class EditCountryForm extends Model
     public function attributeLabels()
     {
         return [
-            'name' => 'Наименование',
+            'name' => 'Название',
         ];
     }
 
     public function getDto()
     {
-        return new CountryDto(
+        return new GenreDto(
             $this->name
         );
     }

@@ -3,24 +3,25 @@
  * Created by PhpStorm.
  * User: anton
  * Date: 05.03.19
- * Time: 16:09
+ * Time: 15:19
  */
 
-namespace backend\forms;
+namespace backend\forms\Metadata;
+
 
 use backend\services\metadata\MetadataDto;
+use common\domain\Metadata\Metadata;
 use yii\base\Model;
 
 /**
- * Class CreateMetadataForm
+ * Class EditMetadataForm
  * @package backend\forms
  *
  *
- * Форма создания метаданных
+ * Форма редактирования метаданных фильма
  */
-class CreateMetadataForm extends Model
+class EditMetadataForm extends Model
 {
-    public $filmId;
     public $year;
     public $director;
     public $producer;
@@ -46,11 +47,29 @@ class CreateMetadataForm extends Model
         ];
     }
 
-    public function __construct($filmId, array $config = [])
+    public function __construct(Metadata $metadata, array $config = [])
     {
         parent::__construct($config);
 
-        $this->filmId = $filmId;
+        $this->year = $metadata->year;
+        $this->director = $metadata->director;
+        $this->producer = $metadata->producer;
+        $this->composer = $metadata->composer;
+        $this->screenwriter = $metadata->screenwriter;
+        $this->operator = $metadata->operator;
+        $this->budget = $metadata->budget;
+        $this->age = $metadata->age;
+        $this->duration = $metadata->duration;
+
+        $this->genres = [];
+        foreach ($metadata->genres as $item) {
+            $this->genres[] = $item->id;
+        }
+
+        $this->country = [];
+        foreach ($metadata->countries as $item) {
+            $this->country[] = $item->id;
+        }
 
     }
 
@@ -89,8 +108,7 @@ class CreateMetadataForm extends Model
             $this->age,
             $this->duration,
             $this->genres,
-            $this->country,
-            $this->filmId
+            $this->country
         );
     }
 }
