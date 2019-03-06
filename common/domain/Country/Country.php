@@ -24,4 +24,18 @@ class Country extends ActiveRecord
     {
         return '{{%country}}';
     }
+
+    public static function create($name)
+    {
+        $film = new self();
+
+        $film->name = $name;
+
+        return $film;
+    }
+
+    public function edit($name)
+    {
+        $this->name = $name;
+    }
 }

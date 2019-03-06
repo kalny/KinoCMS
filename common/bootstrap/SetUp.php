@@ -9,8 +9,10 @@
 namespace Common\bootstrap;
 
 
+use common\domain\Country\CountryRepositoryInterface;
 use common\domain\Film\FilmRepositoryInterface;
 use common\domain\Metadata\MetadataRepositoryInterface;
+use common\repositories\CountryRepository;
 use common\repositories\FilmRepository;
 use common\repositories\MetadataRepository;
 use Yii;
@@ -30,5 +32,6 @@ class SetUp implements BootstrapInterface
 
         $container->setSingleton(FilmRepositoryInterface::class, FilmRepository::class);
         $container->setSingleton(MetadataRepositoryInterface::class, MetadataRepository::class);
+        $container->setSingleton(CountryRepositoryInterface::class, CountryRepository::class);
     }
 }

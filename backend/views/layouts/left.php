@@ -22,6 +22,8 @@
                 'items' => [
                     ['label' => 'Главная страница', 'icon' => 'home', 'url' => ['/'], 'active' => $this->context->id == 'site'],
                     ['label' => 'Фильмы', 'icon' => 'home', 'url' => ['/films'], 'active' => $this->context->id == 'films'],
+                    ['label' => 'Страны', 'icon' => 'home', 'url' => ['/countries'], 'active' => $this->context->id == 'countries'],
+                    ['label' => 'Жанры', 'icon' => 'home', 'url' => ['/genres'], 'active' => $this->context->id == 'genres'],
                     [
                         'label' => 'О нас',
                         'icon' => 'share',

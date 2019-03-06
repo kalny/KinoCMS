@@ -15,6 +15,7 @@ return [
         'films/galleryApi'          => 'films/galleryApi',
         'login'                     => 'site/login',
         'logout'                    => 'site/logout',
+
         'films'                     => 'films/index',
         'films/edit/<id>'           => 'films/edit',
         'films/add'                 => 'films/add',
@@ -23,6 +24,17 @@ return [
         'films/meta/<id>'           => 'metadata/view',
         'films/edit-metadata/<id>'  => 'metadata/edit',
         'films/add-metadata/<id>'   => 'metadata/add',
+
+        'countries'                 => 'countries/index',
+        'countries/add'             => 'countries/add',
+        'countries/edit/<id>'       => 'countries/edit',
+        'countries/delete'          => 'countries/delete',
+
+        'genres'                    => 'genres/index',
+        'genres/add'                => 'genres/add',
+        'genres/edit/<id>'          => 'genres/edit',
+        'genres/delete'             => 'genres/delete',
+
         'news'                      => 'news/index',
         'news/edit/<id>'            => 'news/edit',
         'news/add'                  => 'news/add',
