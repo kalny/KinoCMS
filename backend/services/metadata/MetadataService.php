@@ -94,6 +94,14 @@ class MetadataService
 
         $this->repository->save($metadata);
 
+        if (is_array($metadataDto->genres)) {
+            $this->repository->addGenres($metadata, $metadataDto->genres);
+        }
+
+        if (is_array($metadataDto->country)) {
+            $this->repository->addCountry($metadata, $metadataDto->country);
+        }
+
         return $metadata;
     }
 }

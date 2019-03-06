@@ -95,8 +95,13 @@ class MetadataController extends Controller
             return $this->redirect(['metadata/view', 'id' => $metadata->film->id]);
         }
 
+        $genres = ArrayHelper::map(Genre::find()->asArray()->all(), 'id', 'name');
+        $country = ArrayHelper::map(Country::find()->asArray()->all(), 'id', 'name');
+
         return $this->render('add', [
-            'formModel' => $form
+            'formModel' => $form,
+            'genres' => $genres,
+            'country' => $country
         ]);
     }
 

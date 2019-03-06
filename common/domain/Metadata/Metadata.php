@@ -49,7 +49,7 @@ class Metadata extends ActiveRecord
         $this->duration = $duration;
     }
 
-    public function create($year, $director, $producer, $composer, $screenwriter, $operator, $budget, $age, $duration, $filmId)
+    public static function create($year, $director, $producer, $composer, $screenwriter, $operator, $budget, $age, $duration, $filmId)
     {
         $metadata = new self();
 

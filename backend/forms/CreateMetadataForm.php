@@ -31,6 +31,9 @@ class CreateMetadataForm extends Model
     public $age;
     public $duration;
 
+    public $genres;
+    public $country;
+
     public function rules()
     {
         return [
@@ -39,6 +42,7 @@ class CreateMetadataForm extends Model
             [['year', 'director', 'producer', 'composer', 'screenwriter', 'operator', 'budget', 'age', 'duration'], 'required'],
             [['director', 'producer', 'composer', 'screenwriter', 'operator'], 'string'],
             [['year'], 'string','length' => 4],
+            [['country', 'genres'], 'safe']
         ];
     }
 
@@ -62,6 +66,8 @@ class CreateMetadataForm extends Model
             'budget' => 'Бюджет',
             'age' => 'Возраст',
             'duration' => 'Продолжительность',
+            'genres' => 'Жанр',
+            'country' => 'Страна',
         ];
     }
 
@@ -82,6 +88,8 @@ class CreateMetadataForm extends Model
             $this->budget,
             $this->age,
             $this->duration,
+            $this->genres,
+            $this->country,
             $this->filmId
         );
     }
