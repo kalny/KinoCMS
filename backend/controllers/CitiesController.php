@@ -14,6 +14,7 @@ use backend\forms\EditCityForm;
 use backend\services\cities\CitiesService;
 use common\domain\City\City;
 use Yii;
+use yii\db\IntegrityException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -81,7 +82,11 @@ class CitiesController extends Controller
 
         $city = $this->getCity($id);
 
-        $city->delete();
+        try {
+            $city->delete();
+        } catch (IntegrityException $e) {
+            Yii::$app->session->setFlash('warning', "В этом городе есть сеансы, нельзя его удалить.");
+        }
 
         return $this->redirect(['cities/index']);
     }
