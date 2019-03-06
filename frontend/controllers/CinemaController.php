@@ -9,6 +9,7 @@
 namespace frontend\controllers;
 
 
+use frontend\query\FilmQuery;
 use yii\web\Controller;
 
 class CinemaController extends Controller
@@ -19,7 +20,11 @@ class CinemaController extends Controller
      */
     public function actionAffiche()
     {
-        return $this->render('affiche');
+        $films = (new FilmQuery())->getFilms();
+
+        return $this->render('affiche', [
+            'films' => $films
+        ]);
     }
 
     /**

@@ -118,3 +118,11 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.film-preview {
+    border: 1px solid #ccc;
+    display: inline-block;
+    text-align: center;
+    padding: 15px;
+    margin: 10px;
+}
