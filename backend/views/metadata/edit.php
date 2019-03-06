@@ -16,9 +16,18 @@ use yii\widgets\ActiveForm;
 <div class="films-edit">
     <?php $form = ActiveForm::begin(); ?>
 
-    <?php
+    <?= $form->field($formModel, 'genres')->widget(Select2::class, [
+        'data' => $genres,
+        'options' => [
+            'placeholder' => 'Выберите жанры',
+            'multiple' => true
+        ],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ]); ?>
 
-    echo $form->field($formModel, 'country')->widget(Select2::class, [
+    <?= $form->field($formModel, 'country')->widget(Select2::class, [
         'data' => $country,
         'options' => [
             'placeholder' => 'Выберите страны',
@@ -26,14 +35,9 @@ use yii\widgets\ActiveForm;
         ],
         'pluginOptions' => [
             'allowClear' => true,
-            //'tags' => true
         ],
-    ]);
+    ]); ?>
 
-
-
-
-    ?>
     <?= $form->field($formModel, 'year') ?>
     <?= $form->field($formModel, 'director') ?>
     <?= $form->field($formModel, 'producer') ?>

@@ -47,8 +47,26 @@ class MetadataRepository implements MetadataRepositoryInterface
                 ->insert('{{%metadata_country}}', ['metadata_id' => $metadataId, 'country_id' => $id])
                 ->execute();
         }
+    }
 
+    public function addGenres(Metadata $metadata, array $genres)
+    {
+        $metadataId = $metadata->id;
 
+        //Удаляем все жанры
+        \Yii::$app
+            ->db
+            ->createCommand()
+            ->delete('{{%metadata_genres}}', ['metadata_id' => $metadataId])
+            ->execute();
 
+        //записываем заново
+        foreach ($genres as $id) {
+            \Yii::$app
+                ->db
+                ->createCommand()
+                ->insert('{{%metadata_genres}}', ['metadata_id' => $metadataId, 'genre_id' => $id])
+                ->execute();
+        }
     }
 }

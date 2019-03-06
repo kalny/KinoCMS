@@ -14,6 +14,7 @@ use backend\forms\EditMetadataForm;
 use backend\services\metadata\MetadataService;
 use common\domain\Country\Country;
 use common\domain\Film\Film;
+use common\domain\Genre\Genre;
 use common\domain\Metadata\Metadata;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -69,10 +70,12 @@ class MetadataController extends Controller
             return $this->redirect(['metadata/view', 'id' => $metadata->film->id]);
         }
 
+        $genres = ArrayHelper::map(Genre::find()->asArray()->all(), 'id', 'name');
         $country = ArrayHelper::map(Country::find()->asArray()->all(), 'id', 'name');
 
         return $this->render('edit', [
             'formModel' => $form,
+            'genres' => $genres,
             'country' => $country
         ]);
     }

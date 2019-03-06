@@ -18,4 +18,5 @@ interface MetadataRepositoryInterface
 {
     public function save(Metadata $metadata);
     public function addCountry(Metadata $metadata, array $country);
+    public function addGenres(Metadata $metadata, array $genres);
 }
