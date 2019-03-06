@@ -15,6 +15,10 @@ use yii\helpers\Html; ?>
 <div class="schedule-view">
 
     <div class="view-actions">
+        <a href="<?= \yii\helpers\Url::to(['films/view', 'id' => $schedule->film->id]) ?>" type="button" class="btn btn-success">
+            К фильму
+        </a>
+
         <a href="<?= \yii\helpers\Url::to(['schedules/change-cost', 'id' => $schedule->id]) ?>" type="button" class="btn btn-primary">
             Сменить цены
         </a>
