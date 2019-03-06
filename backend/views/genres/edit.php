@@ -6,12 +6,12 @@
  * Time: 8:30
  */
 
-$this->title = 'Редактировать страну';
+$this->title = 'Редактировать жанр';
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm; ?>
 
-<div class="countries-edit">
+<div class="genres-edit">
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($formModel, 'name') ?>

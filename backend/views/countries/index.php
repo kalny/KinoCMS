@@ -40,7 +40,7 @@ use yii\helpers\Html; ?>
                 </tbody>
             </table>
             <?php else: ?>
-            <p>Нет ни одной страны фильма</p>
+            <p>Нет ни одной страны</p>
             <?php endif ?>
         </div>
 

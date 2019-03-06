@@ -24,4 +24,18 @@ class Genre extends ActiveRecord
     {
         return '{{%genres}}';
     }
+
+    public static function create($name)
+    {
+        $film = new self();
+
+        $film->name = $name;
+
+        return $film;
+    }
+
+    public function edit($name)
+    {
+        $this->name = $name;
+    }
 }

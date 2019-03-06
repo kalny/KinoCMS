@@ -89,12 +89,12 @@ class CountriesController extends Controller
 
     private function getCountry($id)
     {
-        $film = Country::findOne($id);
+        $country = Country::findOne($id);
 
-        if (!$film) {
+        if (!$country) {
             throw new NotFoundHttpException();
         }
 
-        return $film;
+        return $country;
     }
 }
