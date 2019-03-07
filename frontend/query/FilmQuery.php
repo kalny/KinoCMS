@@ -62,7 +62,7 @@ where films.id = :id";
 
         $res = $command->bindValue(':id', $id)->queryOne();
 
-        $res['main_poster'] = '/posters/' . $id . '/' . $res['main_poster'] . '/original.jpg';
+        $res['main_poster'] = (!empty($res['main_poster'])) ? '/posters/' . $id . '/' . $res['main_poster'] . '/original.jpg' : null;
 
         $sqlGenres = "select genres.name 
 from metadata_genres 
