@@ -13,6 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 /**@var array $film */
 /**@var array $schedules */
+/**@var array $posters */
 ?>
 <div class="cinema-film">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -21,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     var_dump($film);
     var_dump($schedules);
+    var_dump($posters);
 
     ?>
 </div>

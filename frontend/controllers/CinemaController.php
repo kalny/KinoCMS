@@ -35,10 +35,12 @@ class CinemaController extends Controller
     {
         $film = (new FilmQuery())->getFilm($id);
         $schedules = (new FilmQuery())->getSchedules($id);
+        $posters = (new FilmQuery())->getPosters($id);
 
         return $this->render('film', [
             'film' => $film,
-            'schedules' => $schedules
+            'schedules' => $schedules,
+            'posters' => $posters
         ]);
     }
 }

@@ -50,7 +50,7 @@ order by films.name ASC, date ASC;";
     public function getFilm($id)
     {
         $sql = "select films.name, films.description, films.trailer_url, 
-gallery_image.rank, 
+gallery_image.rank as main_poster, 
 metadata.year, metadata.director, metadata.producer, metadata.composer, metadata.screenwriter, metadata.operator, metadata.budget, metadata.age, metadata.duration 
 from films 
 left join gallery_image on films.main_poster_id = gallery_image.id 
@@ -61,6 +61,8 @@ where films.id = :id";
         $command = $connection->createCommand($sql);
 
         $res = $command->bindValue(':id', $id)->queryOne();
+
+        $res['main_poster'] = '/posters/' . $id . '/' . $res['main_poster'] . '/original.jpg';
 
         $sqlGenres = "select genres.name 
 from metadata_genres 
@@ -124,6 +126,26 @@ order by date asc";
             $item['time'] = $formattedTime;
 
             $result[] = $item;
+        }
+
+        return $result;
+    }
+
+    public function getPosters($id)
+    {
+        $sql = "select rank from gallery_image where ownerId = :id";
+
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand($sql);
+
+        $res = $command
+            ->bindValue(':id', $id)
+            ->queryAll();
+
+        $result = [];
+
+        foreach ($res as $item) {
+            $result[] = '/posters/' . $id . '/' . $item['rank'] . '/original.jpg';;
         }
 
         return $result;
