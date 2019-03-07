@@ -34,9 +34,11 @@ class CinemaController extends Controller
     public function actionFilm($id)
     {
         $film = (new FilmQuery())->getFilm($id);
+        $schedules = (new FilmQuery())->getSchedules($id);
 
         return $this->render('film', [
-            'film' => $film
+            'film' => $film,
+            'schedules' => $schedules
         ]);
     }
 }

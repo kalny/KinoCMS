@@ -12,6 +12,7 @@ $this->title = 'Карточка фильма';
 $this->params['breadcrumbs'][] = $this->title;
 
 /**@var array $film */
+/**@var array $schedules */
 ?>
 <div class="cinema-film">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -19,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
 
     var_dump($film);
+    var_dump($schedules);
 
     ?>
 </div>

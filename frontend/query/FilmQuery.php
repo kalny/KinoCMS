@@ -9,6 +9,7 @@
 namespace frontend\query;
 
 
+use common\domain\Schedule\Schedule;
 use Yii;
 
 class FilmQuery
@@ -92,5 +93,39 @@ where metadata.film_id = :id;
         }
 
         return $res;
+    }
+
+    public function getSchedules($id)
+    {
+        $sql = "select cities.name, schedules.date, schedules.type, schedules.hall, schedules.price_1, schedules.price_2, schedules.price_3 
+from schedules 
+join cities on schedules.city_id = cities.id 
+where schedules.film_id = :id and schedules.status = :status 
+order by date asc";
+
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand($sql);
+
+        $res = $command
+            ->bindValue(':id', $id)
+            ->bindValue(':status', Schedule::STATUS_OPENED)
+            ->queryAll();
+
+        $result = [];
+
+        foreach ($res as $item) {
+
+            $dateTime = (new \DateTimeImmutable())->setTimestamp($item['date']);
+
+            $formattedDate = $dateTime->format('d.m.Y');
+            $formattedTime = $dateTime->format('H:i:s');
+
+            $item['date'] = $formattedDate;
+            $item['time'] = $formattedTime;
+
+            $result[] = $item;
+        }
+
+        return $result;
     }
 }
