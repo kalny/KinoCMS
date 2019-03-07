@@ -45,4 +45,52 @@ order by films.name ASC, date ASC;";
 
         return $result;
     }
+
+    public function getFilm($id)
+    {
+        $sql = "select films.name, films.description, films.trailer_url, 
+gallery_image.rank, 
+metadata.year, metadata.director, metadata.producer, metadata.composer, metadata.screenwriter, metadata.operator, metadata.budget, metadata.age, metadata.duration 
+from films 
+left join gallery_image on films.main_poster_id = gallery_image.id 
+left join metadata on films.id = metadata.film_id 
+where films.id = :id";
+
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand($sql);
+
+        $res = $command->bindValue(':id', $id)->queryOne();
+
+        $sqlGenres = "select genres.name 
+from metadata_genres 
+join metadata on metadata_genres.metadata_id = metadata.id 
+join genres on genres.id = metadata_genres.genre_id 
+where metadata.film_id = :id;
+";
+
+        $commandGenres = $connection->createCommand($sqlGenres);
+
+        $resGenres = $commandGenres->bindValue(':id', $id)->queryAll();
+
+        $sqlCountry = "select country.name 
+from metadata_country 
+join metadata on metadata_country.metadata_id = metadata.id 
+join country on country.id = metadata_country.country_id 
+where metadata.film_id = :id;
+";
+
+        $commandCountry = $connection->createCommand($sqlCountry);
+
+        $resCountry = $commandCountry->bindValue(':id', $id)->queryAll();
+
+        foreach ($resGenres as $genre) {
+            $res['genres'][] = $genre['name'];
+        }
+
+        foreach ($resCountry as $country) {
+            $res['country'][] = $country['name'];
+        }
+
+        return $res;
+    }
 }

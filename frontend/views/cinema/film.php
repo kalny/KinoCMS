@@ -10,11 +10,15 @@ use yii\helpers\Html;
 
 $this->title = 'Карточка фильма';
 $this->params['breadcrumbs'][] = $this->title;
+
+/**@var array $film */
 ?>
 <div class="cinema-film">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Здесь будет карточка фильма</p>
+    <?php
 
-    <code><?= __FILE__ ?></code>
+    var_dump($film);
+
+    ?>
 </div>
